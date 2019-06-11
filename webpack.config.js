@@ -9,7 +9,7 @@ const TerserJSPlugin = require("terser-webpack-plugin");
 const Config = require("./config");
 const {MODE, SERVER, TEST} = process.env;
 const IsDevelopment = MODE === "development";
-// const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
 
 
 const CssExtractLoader = {
@@ -61,6 +61,7 @@ const webpackConfig = {
       '@public': path.resolve(__dirname, "src/public"),
       '@http': path.resolve(__dirname, "src/http"),
       '@router': path.resolve(__dirname, "src/router"),
+      '@store': path.resolve(__dirname, "src/store"),
     }
   },
   mode: MODE,
