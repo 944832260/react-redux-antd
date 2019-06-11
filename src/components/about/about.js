@@ -1,11 +1,14 @@
 import * as React from "react";
-// import {RouteProps} from "@public/interface";
+import { connect } from 'react-redux'
+import { changeHead } from "../../store/actions/user";
 
 
 class AboutBundle extends React.Component {
 
-  componentWillMount(){
-
+  componentWillMount() {
+    let headData = {};
+    headData.value = '关于';
+    this.props.changeHead(headData);
   }
 
   go(){
@@ -23,5 +26,18 @@ class AboutBundle extends React.Component {
     );
   }
 }
+function mapStateToProps(state) {
+  return {
+    headmsg: state.headmsg
+  }
+}
+function mapDispatchToProps(dispatch) {
+  return {
+    //更新头部显示
+    changeHead: (obj) => {
+      dispatch(changeHead(obj));
+    }
+  }
+}
 
-export default AboutBundle;
+export default connect(mapStateToProps, mapDispatchToProps)(AboutBundle);
